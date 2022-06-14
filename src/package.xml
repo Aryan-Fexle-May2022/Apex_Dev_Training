@@ -4,6 +4,8 @@
         <members>ContactSearch</members>
         <members>EmployeeRecords</members>
         <members>StudentManager</members>
+		<members>PyramidProgram</members>
+        <members>StarPattern2</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -61,6 +63,43 @@
         <members>Student__c.Working_Office__c</members>
         <members>Student__c.Year_Of_Class__c</members>
         <members>Teacher__c.College__c</members>
+		<members>Bank_Account__c.ATM_Card_No__c</members>
+        <members>Bank_Account__c.Account_Holder_s_Address__c</members>
+        <members>Bank_Account__c.Account_Holder_s_Contact_Number__c</members>
+        <members>Bank_Account__c.Account_Holder_s_Email__c</members>
+        <members>Bank_Account__c.Account_Type__c</members>
+        <members>Bank_Account__c.Age__c</members>
+        <members>Bank_Account__c.Annual_Income__c</members>
+        <members>Bank_Account__c.Bank_Account_Number__c</members>
+        <members>Bank_Account__c.Category__c</members>
+        <members>Bank_Account__c.City__c</members>
+        <members>Bank_Account__c.Date_Of_Birth__c</members>
+        <members>Bank_Account__c.Gender__c</members>
+        <members>Bank_Account__c.Initial_Balance__c</members>
+        <members>Bank_Account__c.Internet_Banking__c</members>
+        <members>Bank_Account__c.Issue_ATM__c</members>
+        <members>Bank_Account__c.Marital_Status__c</members>
+        <members>Bank_Account__c.Maximum_Amount_Deposited__c</members>
+        <members>Bank_Account__c.Minimum_Amount_Deposited__c</members>
+        <members>Bank_Account__c.Occupation__c</members>
+        <members>Bank_Account__c.PAN_Card_No__c</members>
+        <members>Bank_Account__c.Qualification__c</members>
+        <members>Bank_Account__c.Registered_Date__c</members>
+        <members>Bank_Account__c.Residence_No__c</members>
+        <members>Bank_Account__c.SMS_Alert__c</members>
+        <members>Bank_Account__c.State__c</members>
+        <members>Bank_Account__c.Total_Amount_Deposited__c</members>
+        <members>Bank_Account__c.Total_Number_Of_Deposited__c</members>
+        <members>Bank_Account__c.Zip_Code__c</members>
+        <members>Conference_Room__c.Conference_Room_Location__c</members>
+        <members>Conference_Room__c.Has_Projector__c</members>
+        <members>Conference_Room__c.Number_of_Seats_Available__c</members>
+        <members>Deposit__c.Bank_Account__c</members>
+        <members>Deposit__c.Deposited_Amount__c</members>
+        <members>Meeting__c.Conference_Room__c</members>
+        <members>Meeting__c.Number_of_Participants__c</members>
+        <members>Meeting__c.Office__c</members>
+        <members>Meeting__c.Projector_Required__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -76,6 +115,12 @@
         <members>Subject__c</members>
         <members>Teacher__c</members>
         <members>Year_Of_Class__c</members>
+		<members>Bank_Account__c</members>
+        <members>Conference_Room__c</members>
+        <members>Deposit__c</members>
+        <members>Meeting__c</members>
+        <members>Office__c</members>
+        <name>CustomObject</name>
         <name>CustomObject</name>
     </types>
     <types>
@@ -87,6 +132,11 @@
         <members>Subject__c</members>
         <members>Teacher__c</members>
         <members>Year_Of_Class__c</members>
+		<members>Bank_Account__c</members>
+        <members>Conference_Room__c</members>
+        <members>Deposit__c</members>
+        <members>Meeting__c</members>
+        <members>Office__c</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -99,6 +149,11 @@
         <members>Subject__c-Subject Layout</members>
         <members>Teacher__c-Teacher Layout</members>
         <members>Year_Of_Class__c-Year Of Class Layout</members>
+		<members>Bank_Account__c-Bank Account Layout</members>
+        <members>Conference_Room__c-Conference Room Layout</members>
+        <members>Deposit__c-Deposit Layout</members>
+        <members>Meeting__c-Meeting Layout</members>
+        <members>Office__c-Office Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -110,6 +165,11 @@
         <members>Subject__c.All</members>
         <members>Teacher__c.All</members>
         <members>Year_Of_Class__c.All</members>
+		<members>Bank_Account__c.All</members>
+		<members>Conference_Room__c.All</members>
+		<members>Deposit__c.All</members>
+		<members>Meeting__c.All</members>
+		<members>Office__c.All</members>
         <name>ListView</name>
     </types>
     <types>
