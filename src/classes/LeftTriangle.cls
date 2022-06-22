@@ -5,7 +5,7 @@ public with sharing class LeftTriangle {
             for(Integer j=1;j<=i;j++) {
                 s = s + '*';
             }
-            system.debug(s);
+            System.debug(s);
         }
     }
 }

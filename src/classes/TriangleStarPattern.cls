@@ -2,7 +2,6 @@ public class TriangleStarPattern {
     public TriangleStarPattern() {
         for(Integer i=1;i<=5;i++) {
             String s = ' ';
-        
             if(i==1) {
                 for(Integer j=1;j<=9;j++) {
                     s = s + '*';
