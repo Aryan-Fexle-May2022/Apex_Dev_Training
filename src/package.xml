@@ -4,14 +4,14 @@
         <members>ContactSearch</members>
         <members>EmployeeRecords</members>
         <members>StudentManager</members>
-		<members>PyramidProgram</members>
+		<members>StarPattern1</members>
         <members>StarPattern2</members>
 		<members>InvertedPyramid</members>
 		<members>LeftTriangle</members>
 		<members>LeftUpDownTriangle</members>
 		<members>PrintAlphabetA</members>
 		<members>RightUpDownTriangle</members>
-		<members>StarPattern1</members>
+        <members>PyramidProgram</members>
 		<members>TriangleStarPattern</members>
         <name>ApexClass</name>
     </types>

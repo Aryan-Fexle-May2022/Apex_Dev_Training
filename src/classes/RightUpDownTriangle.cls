@@ -7,7 +7,6 @@ public class RightUpDownTriangle {
                 for(Integer j=i;j<=n/2;j++) {
                     s = s +'_';
                 }
-                
                 for(Integer j=1;j<=i;j++) {
                     s = s + '*';
                 }
@@ -22,7 +21,6 @@ public class RightUpDownTriangle {
                 a = a - 2;
             }
             System.debug(s);
-           
         }
     }
 }
