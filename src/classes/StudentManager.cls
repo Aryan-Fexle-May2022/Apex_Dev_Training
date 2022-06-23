@@ -1,5 +1,4 @@
 public class StudentManager {
-    
     // Insert Student records
     public void insertRecord() {
         Student__c student = new Student__c();
@@ -58,7 +57,7 @@ public class StudentManager {
         //Query 1 Students
         List<Student__c> studentList = [SELECT id, name, Roll_Number__c FROM Student__c ORDER BY createdDate ASC LIMIT 5];
         for(Student__c iterateRecord : studentList){
-            system.debug('Check Student Data ::: ' + iterateRecord);
+            System.debug('Check Student Data ::: ' + iterateRecord);
         }
     }
 }
