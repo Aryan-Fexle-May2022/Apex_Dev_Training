@@ -4,7 +4,7 @@ public class StarPattern2 {
             String s = ' ';
             for(Integer j=0;j<=n;j++) {
                 //System.debug('*');
-                s= s + '*';
+                s = s + '*';
             }
             System.debug(s);
         }
