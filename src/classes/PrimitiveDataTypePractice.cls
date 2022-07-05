@@ -2,7 +2,7 @@ public with sharing class PrimitiveDataTypePractice {
     // Understanding about Boolean Data Type
     public void learnBooleanDataType(Boolean input) {
         Boolean isWinner = input;
-        if(isWinner==false) {
+        if(!isWinner) {
             System.debug('He/She is not a winner!!');
         }
         else {
