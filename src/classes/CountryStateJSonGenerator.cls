@@ -6,22 +6,17 @@
                             -Here JSON format is generated 
                             -We have a Constructor for Map filling and a method for JSON generator
 							-Updating the JSON data to database(Text area field)
-    Created By : Aryan Sharma
+    Created BY : Aryan Sharma
     Created Date : 11-07-2022
-    Revision Logs : V_1.0 - Created -Date - 12-07-2022
-                    				-DevName -Aryan Sharma
-                    				-Reason - Creating JSON format
-					V_1.1 - Created -Date - 13-07-2022
-                    				-DevName -Aryan Sharma
-                    				-Reason - JSON data updated to Database(Text area field) 
+    Revision Logs : V_1.0 - Created
 **/
 public with sharing class CountryStateJSonGenerator {
     List<District__c> listDistrict = new List<District__c>();
-    List<State__c> listState = [Select Name, Country__r.Name, 
+    List<State__c> listState = [SELECT Name, Country__r.Name, 
                                 Country__r.Country_Code__c, 
                                 Country__r.Total_Number_Of_Districts__c, 
                                 Country__r.Total_Number_Of_States__c, 
-                                Country__r.Country_Json_Data__c From State__c] ;
+                                Country__r.Country_Json_Data__c FROM State__c] ;
     List<Country__c> listCountry = new List<Country__c>();
     Map<String, Map<String, List<String>>> mapCountryAndStateWithDistricts = 
         new Map<String, Map<String, List<String>>>();
@@ -37,21 +32,21 @@ public with sharing class CountryStateJSonGenerator {
     public class States{
         Public List<Districts> districts{get; set;}
         public Integer Total_Number_Of_Districts{get; set;}
-        Public string stateName{get; set;}
+        Public String stateName{get; set;}
     }
     public class Districts {
         Public String districtName{get; set;}
     }
     
     public CountryStateJSonGenerator(String startingKeyword) { 
-        listDistrict = [Select Id, Name, State__c, State__r.Name, 
+        listDistrict = [SELECT Id, Name, State__c, State__r.Name, 
                         State__r.Total_Number_Of_Districts__c, 
                         State__r.State_Code__c, State__r.Country__c, 
                         State__r.Country__r.Name, 
                         State__r.Country__r.Country_Code__c, 
                         State__r.Country__r.Total_Number_Of_Districts__c, 
                         State__r.Country__r.Total_Number_Of_States__c, 
-                        State__r.Country__r.Country_Json_Data__c From District__c ];
+                        State__r.Country__r.Country_Json_Data__c FROM District__c ];
         //System.debug(listDistrict);
       
         // 1. Fining the combination of the Country,State and District 
@@ -61,7 +56,7 @@ public with sharing class CountryStateJSonGenerator {
             //Set<Id> districtSet = new Set<Id>();
             for(District__c d : [SELECT Name, State__r.Name, State__r.Country__r.Name 
                                  FROM District__c 
-                                 Where (Name LIKE :startingKeyword AND 
+                                 WHERE (Name LIKE :startingKeyword AND 
                                         State__r.Name LIKE :startingKeyword AND 
                                         State__r.Country__r.Name LIKE :startingKeyword)]) {
                                             listOfStateAndDistrict.add(d.Name);
@@ -123,64 +118,72 @@ public with sharing class CountryStateJSonGenerator {
     // Method for the JSON Generator
     public void countryJSONGenerator(String countryName) {
         Country wrapCountry = new country();
-        //for(String cont : mapCountryAndStateWithDistricts.keySet()){
         wrapCountry.countryName = countryName;
         States wrapState = new States();
         wrapCountry.states = new List<States>();
-        
-        List<AggregateResult> listAggState = 
-            [Select COUNT(Name)Total_Number_Of_States from State__c 
-             Where Country__r.Name LIKE :countryName 
-             Group By Country__r.Name];  
-        wrapCountry.Total_Number_Of_States =  
-            (Integer)listAggState[0].get('Total_Number_Of_States');
-        List<AggregateResult> listAggDistrict = 
-            [Select COUNT(Name)Total_Number_Of_Districts from District__c
-             Where State__r.Country__r.Name LIKE :countryName 
-             Group By State__r.Country__r.Name];    
-        wrapCountry.Total_Number_Of_Districts = 
-            (Integer)listAggDistrict[0].get('Total_Number_Of_Districts');
-        for(String stateName :mapCountryAndStateWithDistricts.get(countryName).keyset()){
-            wrapState.stateName = stateName;
-            wrapState.districts = new list<Districts>();
-            List<AggregateResult> listAggDistrictWithState = 
-                [Select COUNT(Name)Total_Number_Of_Districts 
-                 from District__c
-                 Where State__r.Country__r.Name LIKE :countryName 
-                 Group By State__r.Name]; 
-            wrapState.Total_Number_Of_Districts = 
-                (Integer)listAggDistrictWithState[0].get('Total_Number_Of_Districts');
-            for(String districtName :
-                mapCountryAndStateWithDistricts.get(countryName).get(stateName)) {
-                    Districts wrapDistrict = new Districts();
-                    wrapDistrict.districtName = districtName;
-                    
-                    WrapState.districts.add(wrapDistrict);
-                } 
-            wrapCountry.states.add(WrapState);
+        if(mapCountryAndStateWithDistricts.containsKey(countryName)) {
+            List<AggregateResult> listAggState = [SELECT COUNT(Name)Total_Number_Of_States 
+                                                  FROM State__c 
+                                                  WHERE Country__r.Name LIKE :countryName 
+                                                  GROUP BY Country__r.Name];  
+            wrapCountry.Total_Number_Of_States =  
+                (Integer)listAggState[0].get('Total_Number_Of_States');
+            List<AggregateResult> listAggDistrict = [SELECT COUNT(Name)Total_Number_Of_Districts 
+                                                     FROM District__c
+                                                     WHERE State__r.Country__r.Name LIKE :countryName 
+                                                     GROUP BY State__r.Country__r.Name];    
+            wrapCountry.Total_Number_Of_Districts = 
+                (Integer)listAggDistrict[0].get('Total_Number_Of_Districts');
+            for(String stateName :mapCountryAndStateWithDistricts.get(countryName).keySet()){
+                wrapState.stateName = stateName;
+                wrapState.districts = new list<Districts>();
+                List<AggregateResult> listAggDistrictWithState = 
+                    [SELECT COUNT(Name)Total_Number_Of_Districts 
+                     FROM District__c
+                     WHERE State__r.Country__r.Name LIKE :countryName 
+                     GROUP BY State__r.Name]; 
+                wrapState.Total_Number_Of_Districts = 
+                    (Integer)listAggDistrictWithState[0].get('Total_Number_Of_Districts');
+                if(mapCountryAndStateWithDistricts.get(countryName).containsKey(stateName)){
+                    for(String districtName :
+                        mapCountryAndStateWithDistricts.get(countryName).get(stateName)) {
+                            Districts wrapDistrict = new Districts();
+                            wrapDistrict.districtName = districtName;
+                            
+                            WrapState.districts.add(wrapDistrict);
+                        } 
+                }
+                wrapCountry.states.add(WrapState);
+            }
         }
+        else {
+            throw new CountryNotFoundException();
+        } 
+        //} catch(CountryNotFoundException e) {
+        //   System.debug('No such Country found');
+        //}
         // Country__c.Country_JSON_Data__c abc = deserialize(jsonString, Country.class);
         //Country abc = (Country)JSON.deserialize(jsonString, Country.class);
         //System.debug(abc);
         String jsonString = JSON.serialize(wrapCountry);
-        List<Country__c> listCont = [Select Id, Name, Country_Json_Data__c,
+        List<Country__c> listCont = [SELECT Id, Name, Country_Json_Data__c,
                                      Total_Number_of_Districts__c, 
                                      Total_Number_of_States__c 
-                                     From Country__c Where Name LIKE :countryName];
-        listCont[0].Country_Json_Data__c = jsonString;
-        listCont[0].Total_Number_of_States__c = wrapCountry.Total_Number_Of_States;
-        listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts;
-        
-        List<State__c> listState = [Select Id, Total_Number_of_Districts__c from State__c 
-                             Where Country__r.Name LIKE :countryName];
-        for (State__c state : listState) {
-            state.Total_Number_of_Districts__c = wrapState.Total_Number_Of_Districts;
-        }
-        
-        System.debug(jsonString);
-        update listState;
-        update listCont;
-        String linkOfRecord = URL.getSalesforceBaseUrl().toExternalForm()+'/'+listCont[0];
-        System.debug(linkOfRecord);
-    }   
+                                     FROM Country__c WHERE Name LIKE :countryName];
+        List<State__c> listState = [SELECT Id, Total_Number_of_Districts__c FROM State__c 
+                                    WHERE Country__r.Name LIKE :countryName];
+        if(!listCont.isEmpty()) {
+            listCont[0].Country_Json_Data__c = jsonString;
+            listCont[0].Total_Number_of_States__c = wrapCountry.Total_Number_Of_States;
+            listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts;
+            for(State__c state : listState) {
+                state.Total_Number_of_Districts__c = wrapState.Total_Number_Of_Districts;
+            }
+            update listState;
+            update listCont;
+            System.debug(jsonString);   
+            String linkOfRecord = URL.getSalesforceBaseUrl().toExternalForm()+'/'+listCont[0];
+            System.debug(linkOfRecord);
+        }   
+    }
 }
