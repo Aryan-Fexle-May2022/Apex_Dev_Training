@@ -149,7 +149,6 @@ public with sharing class CountryStateJSonGenerator {
                         mapCountryAndStateWithDistricts.get(countryName).get(stateName)) {
                             Districts wrapDistrict = new Districts();
                             wrapDistrict.districtName = districtName;
-                            
                             WrapState.districts.add(wrapDistrict);
                         } 
                 }
@@ -176,8 +175,10 @@ public with sharing class CountryStateJSonGenerator {
             listCont[0].Country_Json_Data__c = jsonString;
             listCont[0].Total_Number_of_States__c = wrapCountry.Total_Number_Of_States;
             listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts;
-            for(State__c state : listState) {
-                state.Total_Number_of_Districts__c = wrapState.Total_Number_Of_Districts;
+            if(!listState.isEmpty()) {
+                for(State__c state : listState) {
+                    state.Total_Number_of_Districts__c = wrapState.Total_Number_Of_Districts;
+                }
             }
             update listState;
             update listCont;
