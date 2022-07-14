@@ -177,10 +177,11 @@ public with sharing class CountryStateJSonGenerator {
             listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts;
             if(!listState.isEmpty()) {
                 for(State__c state : listState) {
-                    state.Total_Number_of_Districts__c = wrapState.Total_Number_Of_Districts;
+                    state.Total_Number_of_Districts__c = 
+                        wrapState.Total_Number_Of_Districts;
                 }
+                update listState;
             }
-            update listState;
             update listCont;
             System.debug(jsonString);   
             String linkOfRecord = URL.getSalesforceBaseUrl().toExternalForm()+'/'+listCont[0];
