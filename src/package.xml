@@ -4,15 +4,42 @@
         <members>ContactSearch</members>
         <members>EmployeeRecords</members>
         <members>StudentManager</members>
-	<members>StarPattern1</members>
+        <members>StarPattern1</members>
         <members>StarPattern2</members>
-	<members>InvertedPyramid</members>
-	<members>LeftTriangle</members>
-	<members>LeftUpDownTriangle</members>
-	<members>PrintAlphabetA</members>
-	<members>RightUpDownTriangle</members>
+        <members>InvertedPyramid</members>
+        <members>LeftTriangle</members>
+        <members>LeftUpDownTriangle</members>
+        <members>PrintAlphabetA</members>
+        <members>RightUpDownTriangle</members>
         <members>PyramidProgram</members>
-	<members>TriangleStarPattern</members>
+        <members>TriangleStarPattern</members>
+        <members>MapExample</members>
+        <members>SetExample</members>
+        <members>ListExample</members>
+        <members>PracticeStringClass</members>
+        <members>PracticeDateTimeClass</members>
+        <members>PracticeDateClass</members>
+        <members>PracticeConstantFinalKeyword</members>
+        <members>PrimitiveDataTypePractice</members>
+        <members>ConditionalStatementPractices</members>
+        <members>LoopsPractices</members>
+        <members>MethodOverloadingExample</members>
+        <members>OveriddenMarkerClass</members>
+        <members>OveridingYellowMarkerClass</members>
+        <members>CallByValueExample</members>
+        <members>CallByReferenceExample</members>
+        <members>PurchaseOrderInterface</members>
+        <members>CustomerPurchaseOrderClass</members>
+        <members>EmployeePurchaseOrderClass</members>
+        <members>SuperKeywordClass</members>
+        <members>SubClass</members>
+        <members>ApexCollections</members>
+        <members>MapHierarchalPractice</members>
+        <members>LearnSOQLAndDML</members>
+        <members>CountryNotFoundException</members>
+        <members>ExampleJSon</members>
+        <members>WorkingWithSOQL</members>
+        <members>CountryStateJSonGenerator</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -70,7 +97,7 @@
         <members>Student__c.Working_Office__c</members>
         <members>Student__c.Year_Of_Class__c</members>
         <members>Teacher__c.College__c</members>
-	<members>Bank_Account__c.ATM_Card_No__c</members>
+        <members>Bank_Account__c.ATM_Card_No__c</members>
         <members>Bank_Account__c.Account_Holder_s_Address__c</members>
         <members>Bank_Account__c.Account_Holder_s_Contact_Number__c</members>
         <members>Bank_Account__c.Account_Holder_s_Email__c</members>
@@ -122,12 +149,14 @@
         <members>Subject__c</members>
         <members>Teacher__c</members>
         <members>Year_Of_Class__c</members>
-	<members>Bank_Account__c</members>
+        <members>Bank_Account__c</members>
         <members>Conference_Room__c</members>
         <members>Deposit__c</members>
         <members>Meeting__c</members>
         <members>Office__c</members>
-        <name>CustomObject</name>
+        <members>Country__c.object</members>
+        <members>District__c.object</members>
+        <members>State__c.object</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -139,11 +168,14 @@
         <members>Subject__c</members>
         <members>Teacher__c</members>
         <members>Year_Of_Class__c</members>
-	<members>Bank_Account__c</members>
+        <members>Bank_Account__c</members>
         <members>Conference_Room__c</members>
         <members>Deposit__c</members>
         <members>Meeting__c</members>
         <members>Office__c</members>
+        <members>Country__c</members>
+        <members>State__c.</members>
+        <members>District__c</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -156,7 +188,7 @@
         <members>Subject__c-Subject Layout</members>
         <members>Teacher__c-Teacher Layout</members>
         <members>Year_Of_Class__c-Year Of Class Layout</members>
-	<members>Bank_Account__c-Bank Account Layout</members>
+        <members>Bank_Account__c-Bank Account Layout</members>
         <members>Conference_Room__c-Conference Room Layout</members>
         <members>Deposit__c-Deposit Layout</members>
         <members>Meeting__c-Meeting Layout</members>
@@ -172,11 +204,11 @@
         <members>Subject__c.All</members>
         <members>Teacher__c.All</members>
         <members>Year_Of_Class__c.All</members>
-	<members>Bank_Account__c.All</members>
-	<members>Conference_Room__c.All</members>
-	<members>Deposit__c.All</members>
-	<members>Meeting__c.All</members>
-	<members>Office__c.All</members>
+        <members>Bank_Account__c.All</members>
+        <members>Conference_Room__c.All</members>
+        <members>Deposit__c.All</members>
+        <members>Meeting__c.All</members>
+        <members>Office__c.All</members>
         <name>ListView</name>
     </types>
     <types>

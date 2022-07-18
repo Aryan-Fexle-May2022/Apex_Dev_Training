@@ -1,14 +1,16 @@
 /**
-    Description : Purpose - To give the hierarchy of Country Code, Country, State, District
+    Description : Purpose -  To give the hierarchy of Country Code, Country, State, District
                             -Filling the Map dynamically
                             -And also find the combination of these 3 which starts with 'S'
                             -And also find the those district whose length is greater and equal to 12
                             -Here JSON format is generated 
                             -We have a Constructor for Map filling and a method for JSON generator
-							-Updating the JSON data to database(Text area field)
+                            -Updating the JSON data to database(Text area field)
     Created BY : Aryan Sharma
     Created Date : 11-07-2022
-    Revision Logs : V_1.0 - Created
+    Revision Logs : V_1.0 - Created-Date : 18-07-2022
+                                    Dev Name : Aryan Sharma
+                                    Reason : Changes related to JSON & DML
 **/
 public with sharing class CountryStateJSonGenerator {
     List<District__c> listDistrict = new List<District__c>();
@@ -119,7 +121,6 @@ public with sharing class CountryStateJSonGenerator {
     public void countryJSONGenerator(String countryName) {
         Country wrapCountry = new country();
         wrapCountry.countryName = countryName;
-        States wrapState = new States();
         wrapCountry.states = new List<States>();
         if(mapCountryAndStateWithDistricts.containsKey(countryName)) {
             List<AggregateResult> listAggState = [SELECT COUNT(Name)Total_Number_Of_States 
@@ -135,7 +136,8 @@ public with sharing class CountryStateJSonGenerator {
             wrapCountry.Total_Number_Of_Districts = 
                 (Integer)listAggDistrict[0].get('Total_Number_Of_Districts');
             for(String stateName :mapCountryAndStateWithDistricts.get(countryName).keySet()){
-                wrapState.stateName = stateName;
+                States wrapState = new States();
+                wrapState.stateName = stateName; 
                 wrapState.districts = new list<Districts>();
                 List<AggregateResult> listAggDistrictWithState = 
                     [SELECT COUNT(Name)Total_Number_Of_Districts 
@@ -152,15 +154,12 @@ public with sharing class CountryStateJSonGenerator {
                             WrapState.districts.add(wrapDistrict);
                         } 
                 }
-                wrapCountry.states.add(WrapState);
+                wrapCountry.states.add(wrapState);
             }
         }
         else {
             throw new CountryNotFoundException();
-        } 
-        //} catch(CountryNotFoundException e) {
-        //   System.debug('No such Country found');
-        //}
+        }
         // Country__c.Country_JSON_Data__c abc = deserialize(jsonString, Country.class);
         //Country abc = (Country)JSON.deserialize(jsonString, Country.class);
         //System.debug(abc);
@@ -169,23 +168,14 @@ public with sharing class CountryStateJSonGenerator {
                                      Total_Number_of_Districts__c, 
                                      Total_Number_of_States__c 
                                      FROM Country__c WHERE Name LIKE :countryName];
-        List<State__c> listState = [SELECT Id, Total_Number_of_Districts__c FROM State__c 
-                                    WHERE Country__r.Name LIKE :countryName];
         if(!listCont.isEmpty()) {
             listCont[0].Country_Json_Data__c = jsonString;
             listCont[0].Total_Number_of_States__c = wrapCountry.Total_Number_Of_States;
-            listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts;
-            if(!listState.isEmpty()) {
-                for(State__c state : listState) {
-                    state.Total_Number_of_Districts__c = 
-                        wrapState.Total_Number_Of_Districts;
-                }
-                update listState;
-            }
+            listCont[0].Total_Number_of_Districts__c = wrapCountry.Total_Number_Of_Districts; 
             update listCont;
-            System.debug(jsonString);   
-            String linkOfRecord = URL.getSalesforceBaseUrl().toExternalForm()+'/'+listCont[0];
-            System.debug(linkOfRecord);
-        }   
-    }
+        }
+        System.debug(jsonString);   
+        String linkOfRecord = URL.getSalesforceBaseUrl().toExternalForm()+'/'+listCont[0];
+        System.debug(linkOfRecord);
+    }   
 }
