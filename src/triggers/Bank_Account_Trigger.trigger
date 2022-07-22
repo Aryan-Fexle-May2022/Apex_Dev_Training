@@ -3,8 +3,8 @@
                     Inserting Account Number
                     Sending Mail after creating Account
                     Sending Mail after Deactivating Account
-    Created BY : Aryan Sharma
-    Created Date : 20-07-2022
+    Created BY :    Aryan Sharma
+    Created Date :  20-07-2022
     Revision Logs : V_1.0 - Created 								  
 **/
 trigger Bank_Account_Trigger on Bank_Account__c (before insert, after insert,after delete) {
