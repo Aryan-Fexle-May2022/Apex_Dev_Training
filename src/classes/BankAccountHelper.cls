@@ -1,7 +1,7 @@
 /**
-    Description : Purpose - Helper Class For Bank_Account_Trigger
-    Created BY : Aryan Sharma
-    Created Date : 20-07-2022
+    Description :   Helper Class For Bank_Account_Trigger
+    Created BY :    Aryan Sharma
+    Created Date :  20-07-2022
     Revision Logs : V_1.0 - Created 								  
 **/
 public class BankAccountHelper {
@@ -36,7 +36,7 @@ public class BankAccountHelper {
                 //Insitialization to mailing method
                 Messaging.SingleEmailMessage emailMsg = new Messaging.SingleEmailMessage(); 
                 String[] toAddress = new String[]{acct.Account_Holder_s_Email__c};
-                    emailMsg.setToAddresses(toAddress);
+                emailMsg.setToAddresses(toAddress);
                 String emailSub = 'Welcome to '+acct.Bank_Name__c+'!'; //Email Subject
                 emailMsg.setSubject(emailSub);
                 String disName = 'Aryan Sharma'; //Display Name
