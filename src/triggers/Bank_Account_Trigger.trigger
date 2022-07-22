@@ -1,8 +1,8 @@
 /**
-    Description : Purpose -Bank_Account_Trigger for trigger an sObject
-						    Inserting Account Number
-						    Sending Mail after creating Account
-						    Sending Mail after Deactivating Account
+    Description :   Bank_Account_Trigger for trigger an sObject
+                    Inserting Account Number
+                    Sending Mail after creating Account
+                    Sending Mail after Deactivating Account
     Created BY : Aryan Sharma
     Created Date : 20-07-2022
     Revision Logs : V_1.0 - Created 								  
