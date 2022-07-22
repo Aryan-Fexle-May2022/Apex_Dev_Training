@@ -10,21 +10,15 @@
 trigger Bank_Account_Trigger on Bank_Account__c (before insert, after insert,after delete) {
     if(Trigger.isBefore) {
         if(Trigger.isInsert) {
-            for(Bank_Account__c accNewList : Trigger.New) { 
-                BankAccountHelper.insertAccountNumber(Trigger.New);
-            }
+            BankAccountHelper.insertAccountNumber(Trigger.New);
         }
     }
     if(Trigger.isAfter) {
         if(Trigger.isInsert) {
-            for(Bank_Account__c accNewList : Trigger.New) {
-                BankAccountHelper.sendEmailNotificationWhenAccountCreate(Trigger.New);
-            }
+            BankAccountHelper.sendEmailNotificationWhenAccountCreate(Trigger.New);
         }
         if(Trigger.isDelete) {
-            for(Bank_Account__c accOldList : Trigger.old) {
-                BankAccountHelper.sendEmailNotificationWhenAccountDelete(Trigger.Old);
-            }
+            BankAccountHelper.sendEmailNotificationWhenAccountDelete(Trigger.Old);
         }
     }
 }
