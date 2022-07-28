@@ -5,12 +5,9 @@
     Created Date :  27-07-2022
     Revision Logs : V_1.0 - Created 								  
 **/
-trigger Contact_Trigger on Contact (before insert,before update, after undelete) {
+trigger Contact_Trigger on Contact (before insert,before update) {
     if(Trigger.isBefore) {
-        if(Trigger.isInsert) {
-            ContactTriggerHelper.checkDuplicateEmailInsert(Trigger.New);
-        }
-        if(Trigger.isUpdate) {
+        if(Trigger.isInsert || Trigger.isUpdate) {
             ContactTriggerHelper.checkDuplicateEmailUpdate(Trigger.New, Trigger.oldMap);
         }
     }
