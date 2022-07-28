@@ -1,11 +1,11 @@
 /**
-    Description :   Helper Class For Contact_Trigger
-    Created BY :    Aryan Sharma
-    Created Date :  27-07-2022
-    Revision Logs : V_1.0 - Created 								  
+Description :   Helper Class For Contact_Trigger
+Created BY :    Aryan Sharma
+Created Date :  27-07-2022
+Revision Logs : V_1.0 - Created 								  
 **/
-public class ContactHelperClass {
-    public static void emailInsertRecord(List<Contact> conNewList) {
+public class ContactTriggerHelper {
+    public static void checkDuplicateEmailInsert(List<Contact> conNewList) {
         //Set of new Email Set from Trigger.New
         Set<String> newEmailSet = new Set<String>();
         //Set of Existing Email
@@ -21,19 +21,19 @@ public class ContactHelperClass {
         // then it gives us all Contact records which is in our system(Like - 10000)
         // but now it will give us 0 Records bcoz no record exits till now with above email
         List<Contact> existingContList = [SELECT Id, Name, Email FROM Contact 
-                                          WHERE Email IN : newEmailSet];
+                                          WHERE Email IN : newEmailSet AND Email != null];
         //if any any record exits with same Email then add to existingEmailSet
         for(Contact con : existingContList) {
             existingEmailSet.add(con.Email);
         }
         //Now iterate over Trigger.New to check whether existingEmailSet contains Trigger.New Lists Email
         for(Contact con : conNewList) {
-            if(existingEmailSet.contains(con.Email)) {
+            if(existingEmailSet != null && existingEmailSet.contains(con.Email)) {
                 con.Email.addError('Email is already exists, Please change it!, Duplicate Record!');
             }
         } 
     }
-    public static void emailUpdateRecord(List<Contact> conNewList, Map<Id,Contact> conOldMap) {
+    public static void checkDuplicateEmailUpdate(List<Contact> conNewList, Map<Id,Contact> conOldMap) {
         //Set of new Email Set from Trigger.New
         Set<String> newEmailSet = new Set<String>();
         //Set of Existing Email
@@ -52,14 +52,14 @@ public class ContactHelperClass {
         // then it gives us all Contact records which is in our system(Like - 10000)
         // but now it will give us 0 Records bcoz no record exits till now with above email
         List<Contact> existingContList = [SELECT Id, Name, Email FROM Contact 
-                                          WHERE Email IN : newEmailSet];
+                                          WHERE Email IN : newEmailSet AND Email != null];
         //if any any record exits with same Email then add to existingEmailSet
         for(Contact con : existingContList) {
             existingEmailSet.add(con.Email);
         }
         //Now iterate over Trigger.New to check whether existingEmailSet contains Trigger.New Lists Email
         for(Contact con : conNewList) {
-            if(existingEmailSet.contains(con.Email)) {
+            if(existingEmailSet != null && existingEmailSet.contains(con.Email)) {
                 con.Email.addError('Email is already exists, Please change it!, Duplicate Record!');
             }
         }

@@ -8,10 +8,10 @@
 trigger Contact_Trigger on Contact (before insert,before update, after undelete) {
     if(Trigger.isBefore) {
         if(Trigger.isInsert) {
-            ContactHelperClass.emailInsertRecord(Trigger.New);
+            ContactTriggerHelper.checkDuplicateEmailInsert(Trigger.New);
         }
         if(Trigger.isUpdate) {
-            ContactHelperClass.emailUpdateRecord(Trigger.New, Trigger.oldMap);
+            ContactTriggerHelper.checkDuplicateEmailUpdate(Trigger.New, Trigger.oldMap);
         }
     }
 }

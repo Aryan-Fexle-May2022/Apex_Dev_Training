@@ -11,34 +11,34 @@ trigger Account_Trigger on Account (before insert,before update,before delete,
     if(Trigger.isBefore) {
         if(Trigger.isInsert) {
             System.debug('I am before insert trigger on Account Object');
-            AccountHelperClass.beforeInsertMethod1(Trigger.New);   
-            AccountHelperClass.beforeInsertMethod2(Trigger.New);
+            AccountTriggerHelper.beforeInsertMethod1(Trigger.New);   
+            AccountTriggerHelper.beforeInsertMethod2(Trigger.New);
         }
         else if(Trigger.isUpdate) {
             System.debug('I am before update trigger on Account Object'); 
-            AccountHelperClass.beforeUpdateMethod1(Trigger.New , Trigger.Old);
+            AccountTriggerHelper.beforeUpdateMethod1(Trigger.New , Trigger.Old);
         }
         else if(Trigger.isDelete) {
             System.debug('I am before delete trigger on Account Object');
-            AccountHelperClass.beforeDeleteMethod1(Trigger.Old);
+            AccountTriggerHelper.beforeDeleteMethod1(Trigger.Old);
         }
     }
     else if(Trigger.isAfter) {
         if(Trigger.isInsert) {
             System.debug('I am after insert trigger on Account Object');
-            AccountHelperClass.afterInsertMethod1(Trigger.New);            }
+            AccountTriggerHelper.afterInsertMethod1(Trigger.New);            }
         else if(Trigger.isUpdate) {
             System.debug('I am after update trigger on Account Object');
-            AccountHelperClass.afterUpdateMethod1(Trigger.New , Trigger.Old);
-            AccountHelperClass.calculateBalance(Trigger.Old);
+            AccountTriggerHelper.afterUpdateMethod1(Trigger.New , Trigger.Old);
+            AccountTriggerHelper.calculateBalance(Trigger.Old);
         }
         else if(Trigger.isDelete) {
             System.debug('I am after delete trigger on Account Object');
-            AccountHelperClass.afterDeleteMethod1(Trigger.Old);
+            AccountTriggerHelper.afterDeleteMethod1(Trigger.Old);
         }
         else if(Trigger.isUndelete) {
             System.debug('I am after Undelete trigger on Account Object');
-            AccountHelperClass.afterUndeleteMethod1(Trigger.New);
+            AccountTriggerHelper.afterUndeleteMethod1(Trigger.New);
         }
     }
 }

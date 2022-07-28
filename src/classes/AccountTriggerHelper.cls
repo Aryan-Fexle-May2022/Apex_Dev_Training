@@ -4,7 +4,7 @@
     Created Date :  22-07-2022
     Revision Logs : V_1.0 - Created 								  
 **/
-public class AccountHelperClass {
+public class AccountTriggerHelper {
     //Scenerio 1 : prepopulating Shipping Address from Billing Address
     //Before Insert Trigger
     public static void beforeInsertMethod1(List<Account> accList) {
