@@ -8,7 +8,7 @@
 trigger Contact_Trigger on Contact (before insert,before update) {
     if(Trigger.isBefore) {
         if(Trigger.isInsert || Trigger.isUpdate) {
-            ContactTriggerHelper.checkDuplicateEmailUpdate(Trigger.New, Trigger.oldMap);
+            ContactTriggerHelper.checkDuplicateEmail(Trigger.New, Trigger.oldMap);
         }
     }
 }
