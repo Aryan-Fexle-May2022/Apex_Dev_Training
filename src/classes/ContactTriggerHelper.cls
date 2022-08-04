@@ -12,7 +12,7 @@ public class ContactTriggerHelper {
         Set<String> existingEmailSet = new Set<String>();
         // Filling the new Email Set from Trigger.New(conNewList)
         for(Contact newCon : conNewList) {
-            if((newCon.Email != null && conOldMap == null) || newCon.Email != conOldMap.get(newCon.Id).Email) {
+            if(newCon.Email != null && (conOldMap == null || newCon.Email != conOldMap.get(newCon.Id).Email)) {
                 newEmailSet.add(newCon.Email);
             }
         }
