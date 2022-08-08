@@ -182,8 +182,8 @@
         <members>Automobile_TDU__c</members>
         <members>Automobile_Tag__c</members>
         <name>CustomObject</name>
-        </types>
-        <types>
+    </types>
+    <types>
         <members>College__c</members>
         <members>Employee__c</members>
         <members>Pan_Card__c</members>
@@ -205,8 +205,8 @@
         <members>Automobile_Sensor__c</members>
         <members>Automobile_TDU__c</members>
         <members>Automobile_Tag__c</members>
-        </types>
-        <types>
+    </types>
+    <types>
         <members>College__c-College Layout</members>
         <members>Employee__c-Employee Layout</members>
         <members>Pan_Card__c-Pan Card Layout</members>
