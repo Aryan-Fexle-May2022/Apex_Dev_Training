@@ -45,9 +45,9 @@
         <name>ApexClass</name>
     </types>
     <types>
-		<members>Opportunity_Trigger</members>
+        <members>Opportunity_Trigger</members>
         <members>Bank_Account_Trigger</members>
-		<name>ApexTrigger</name>
+        <name>ApexTrigger</name>
 	</types>
     <types>
         <members>Contact.Pan_Card__c</members>
@@ -142,18 +142,18 @@
         <members>Meeting__c.Office__c</members>
         <members>Meeting__c.Projector_Required__c</members>
         <members>Automobile_Presence_Sensor__c.Account__c</members>
-		<members>Automobile_Presence_Sensor__c.Opportunity__c</members>
-		<members>Automobile_Sensor__c.Account__c</members>
-		<members>Automobile_Sensor__c.Opportunity__c</members>
-		<members>Automobile_TDU__c.Account__c</members>
-		<members>Automobile_TDU__c.Opportunity__c</members>
-		<members>Automobile_Tag__c.Account__c</members>
-		<members>Automobile_Tag__c.Opportunity__c</members>
-		<members>Opportunity.Automobile_Tag_Details_1__c</members>
-		<members>Opportunity.Automobile_Tag_Details_2__c</members>
-		<members>Opportunity.Automobile_Tag_Details_3__c</members>
-		<members>Opportunity.Return_To_HQ__c</members>
-		<members>Opportunity.Shipment_Account__c</members>
+        <members>Automobile_Presence_Sensor__c.Opportunity__c</members>
+        <members>Automobile_Sensor__c.Account__c</members>
+        <members>Automobile_Sensor__c.Opportunity__c</members>
+        <members>Automobile_TDU__c.Account__c</members>
+        <members>Automobile_TDU__c.Opportunity__c</members>
+        <members>Automobile_Tag__c.Account__c</members>
+        <members>Automobile_Tag__c.Opportunity__c</members>
+        <members>Opportunity.Automobile_Tag_Details_1__c</members>
+        <members>Opportunity.Automobile_Tag_Details_2__c</members>
+        <members>Opportunity.Automobile_Tag_Details_3__c</members>
+        <members>Opportunity.Return_To_HQ__c</members>
+        <members>Opportunity.Shipment_Account__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -178,12 +178,12 @@
         <members>District__c.object</members>
         <members>State__c.object</members>
         <members>Automobile_Presence_Sensor__c</members>
-		<members>Automobile_Sensor__c</members>
-		<members>Automobile_TDU__c</members>
-		<members>Automobile_Tag__c</members>
+        <members>Automobile_Sensor__c</members>
+        <members>Automobile_TDU__c</members>
+        <members>Automobile_Tag__c</members>
         <name>CustomObject</name>
-    </types>
-    <types>
+        </types>
+        <types>
         <members>College__c</members>
         <members>Employee__c</members>
         <members>Pan_Card__c</members>
@@ -202,11 +202,11 @@
         <members>District__c</members>
         <name>CustomTab</name>
         <members>Automobile_Presence_Sensor__c</members>
-		<members>Automobile_Sensor__c</members>
-		<members>Automobile_TDU__c</members>
-		<members>Automobile_Tag__c</members>
-    </types>
-    <types>
+        <members>Automobile_Sensor__c</members>
+        <members>Automobile_TDU__c</members>
+        <members>Automobile_Tag__c</members>
+        </types>
+        <types>
         <members>College__c-College Layout</members>
         <members>Employee__c-Employee Layout</members>
         <members>Pan_Card__c-Pan Card Layout</members>
