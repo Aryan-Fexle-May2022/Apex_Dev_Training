@@ -1,7 +1,7 @@
 /**
 	Description :   Helper Class For Opportunity_Trigger
 	Created BY :    Aryan Sharma
-	Created Date :  08-08-2022
+	Created Date :  29-07-2022
 	Revision Logs : V_1.0 - Created 								  
 **/
 public class OpportunityTriggerHelper {
@@ -98,24 +98,21 @@ public class OpportunityTriggerHelper {
         System.debug(mapOfOppwithSensors+'mapOfOppwithSensors');
         System.debug(sensorNameList+'sensorList');        
         if(mapOfOppwithSensors.size() >0) {
-            List<Automobile_Sensor__c> existingSensorList = [Select Id, Name, Opportunity__c, Account__c From Automobile_Sensor__c
-                                                             Where Opportunity__c In : mapOfOppwithSensors.keySet() AND 
+            List<Automobile_Sensor__c> existingSensorList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_Sensor__c
+                                                             WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND 
                                                              Name In : sensorNameList];
             System.debug(existingSensorList);
-            List<Automobile_Presence_Sensor__c> existingPresenceList = [Select Id, Name, Opportunity__c, Account__c From 
+            List<Automobile_Presence_Sensor__c> existingPresenceList = [SELECT Id, Name, Opportunity__c, Account__c From 
                                                                         Automobile_Presence_Sensor__c
-                                                                        Where Opportunity__c In : mapOfOppwithSensors.keySet() AND 
+                                                                        WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND 
                                                                         Name In : sensorNameList];
             System.debug(existingPresenceList);
-            List<Automobile_TDU__c> existingTduList = [Select Id, Name, Opportunity__c, Account__c From Automobile_TDU__c
-                                                       Where Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In :  sensorNameList];
+            List<Automobile_TDU__c> existingTduList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_TDU__c
+                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In :  sensorNameList];
             System.debug(existingTduList);
-            List<Automobile_Tag__c> existingTagList = [Select Id, Name, Opportunity__c, Account__c From Automobile_Tag__c
-                                                       Where Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In : sensorNameList];
+            List<Automobile_Tag__c> existingTagList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_Tag__c
+                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In : sensorNameList];
             System.debug(existingTagList);
-            //System.debug(ExistingOpportunity+'<--ExistingOpportunity');
-            //if(!ExistingOpportunity.isEmpty()) {
-            //for(Opportunity existingOpp : ExistingOpportunity) {
             for(Automobile_Sensor__c auto_Sensor : existingSensorList) {
                 mapOfOppwithAutomobileSensor.put(auto_Sensor.Opportunity__c, auto_Sensor);
                 existingAutomobileSensorSet.add(auto_Sensor.Name);
@@ -132,8 +129,6 @@ public class OpportunityTriggerHelper {
                 mapOfOppwithAutomobileTagSensor.put(auto_Sensor.Opportunity__c, auto_Sensor);
                 existingAutomobileTagSensorSet.add(auto_Sensor.Name);
             }
-            //}
-            //}
             // Creating the Opportunity and Related Automobile Records
             for(Opportunity newOpp : MapOfOppwithId.values())
             {
