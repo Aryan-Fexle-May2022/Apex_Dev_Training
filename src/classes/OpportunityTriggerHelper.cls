@@ -1,10 +1,10 @@
 /**
-	Description :   Helper Class For Opportunity_Trigger
-	Created BY :    Aryan Sharma
-	Created Date :  29-07-2022
-	Revision Logs : V_1.0 - Created 								  
+	Description     :   Helper Class For Opportunity_Trigger
+	Created BY      :   Aryan Sharma
+	Created Date    :   29-07-2022
+	Revision Logs   :   V_1.0 - Created 								  
 **/
-public class OpportunityTriggerHelper {
+public with sharing class OpportunityTriggerHelper {
     // List of Automobile Sensor's to be inserted
     public static List<Automobile_Sensor__c> sensorListtoInsert = new List<Automobile_Sensor__c>();
     public static List<Automobile_Presence_Sensor__c> presenceSensorListtoInsert = 
@@ -37,21 +37,23 @@ public class OpportunityTriggerHelper {
         
         // Existing Automobile map used when update
         Map<Id, Automobile_Sensor__c> mapOfOppwithAutomobileSensor = new Map<Id, Automobile_Sensor__c>();
-        Map<Id, Automobile_Presence_Sensor__c> mapOfOppwithAutomobilePresenceSensor = new Map<Id, Automobile_Presence_Sensor__c>();
+        Map<Id, Automobile_Presence_Sensor__c> mapOfOppwithAutomobilePresenceSensor = 
+            new Map<Id, Automobile_Presence_Sensor__c>();
         Map<Id, Automobile_TDU__c> mapOfOppwithAutomobileTDUSensor = new Map<Id, Automobile_TDU__c>();
         Map<Id, Automobile_Tag__c> mapOfOppwithAutomobileTagSensor = new Map<Id, Automobile_Tag__c>(); 
         // Set of Sensor Set
         Set<String> sensorSet;
         for(Opportunity opp : newOppList){
-            if(opp.StageName == 'Shipped to Customer' || opp.StageName == 'Return to HQ' || opp.StageName == 'Return to Customer')    
+            if(opp.StageName == 'Shipped to Customer' || opp.StageName == 'Return to HQ' || 
+               opp.StageName == 'Return to Customer')    
             {
                 if((opp.Automobile_Tag_Details_1__c != null || opp.Automobile_Tag_Details_2__c != null ||
                     opp.Automobile_Tag_Details_3__c != null || opp.Return_To_HQ__c != null) && 
                    (oldOppMap == null || ((opp.Id == oldOppMap.get(opp.Id).Id) && 
-                                          (opp.Automobile_Tag_Details_1__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_1__c || 
-                                           opp.Automobile_Tag_Details_2__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_2__c || 
-                                           opp.Automobile_Tag_Details_3__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_3__c || 
-                                           opp.Return_To_HQ__c != oldOppMap.get(opp.Id).Return_To_HQ__c || 
+                                          (opp.Automobile_Tag_Details_1__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_1__c 
+                                           || opp.Automobile_Tag_Details_2__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_2__c 
+                                           || opp.Automobile_Tag_Details_3__c != oldOppMap.get(opp.Id).Automobile_Tag_Details_3__c 
+                                           || opp.Return_To_HQ__c != oldOppMap.get(opp.Id).Return_To_HQ__c || 
                                            opp.StageName != oldOppMap.get(opp.Id).StageName)))) 
                 {
                     sensorSet = new Set<String>();
@@ -92,15 +94,15 @@ public class OpportunityTriggerHelper {
                 }
             }
             else {
-                opp.StageName.addError('Stage Name should be anyone of them--> "Shipped to Customer", "Return to HQ", "Return to Customer"');
+                opp.StageName.addError('Stage Name should be -->"Shipped to Customer","Return to HQ","Return to Customer"');
             }
         }
         System.debug(mapOfOppwithSensors+'mapOfOppwithSensors');
         System.debug(sensorNameList+'sensorList');        
-        if(mapOfOppwithSensors.size() >0) {
+        if(!mapOfOppwithSensors.isEmpty()) {
             List<Automobile_Sensor__c> existingSensorList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_Sensor__c
-                                                             WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND 
-                                                             Name In : sensorNameList];
+                                                             WHERE Opportunity__c In : mapOfOppwithSensors.keySet() 
+                                                             AND Name In : sensorNameList];
             System.debug(existingSensorList);
             List<Automobile_Presence_Sensor__c> existingPresenceList = [SELECT Id, Name, Opportunity__c, Account__c From 
                                                                         Automobile_Presence_Sensor__c
@@ -108,10 +110,12 @@ public class OpportunityTriggerHelper {
                                                                         Name In : sensorNameList];
             System.debug(existingPresenceList);
             List<Automobile_TDU__c> existingTduList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_TDU__c
-                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In :  sensorNameList];
+                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() 
+                                                       AND Name In :  sensorNameList];
             System.debug(existingTduList);
             List<Automobile_Tag__c> existingTagList = [SELECT Id, Name, Opportunity__c, Account__c From Automobile_Tag__c
-                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() AND Name In : sensorNameList];
+                                                       WHERE Opportunity__c In : mapOfOppwithSensors.keySet() 
+                                                       AND Name In : sensorNameList];
             System.debug(existingTagList);
             for(Automobile_Sensor__c auto_Sensor : existingSensorList) {
                 mapOfOppwithAutomobileSensor.put(auto_Sensor.Opportunity__c, auto_Sensor);
@@ -301,40 +305,40 @@ public class OpportunityTriggerHelper {
                 }
             }
             //Automonile Records Insertion
-            if(sensorListtoInsert.size() >0) {
+            if(!sensorListtoInsert.isEmpty()) {
                 listsObjectsToInsert.addAll(sensorListtoInsert);
             }
-            if(presenceSensorListtoInsert.size() >0) {
+            if(!presenceSensorListtoInsert.isEmpty()) {
                 listsObjectsToInsert.addAll(presenceSensorListtoInsert);
             }
-            if(tduListtoInsert.size() >0) {
+            if(!tduListtoInsert.isEmpty()) {
                 listsObjectsToInsert.addAll(tduListtoInsert);
             }
-            if(tagListtoInsert.size() >0) {
+            if(!tagListtoInsert.isEmpty() ) {
                 listsObjectsToInsert.addAll(tagListtoInsert);
             }
             try {
-                if(listsObjectsToInsert.size()>0){
+                if(!listsObjectsToInsert.isEmpty()){
                     insert listsObjectsToInsert;
                 }
             }catch(DmlException e) {
                 System.debug(e.getMessage());
             }
             // Automible Records Updation
-            if(sensorListtoUpdate.size() >0) {
+            if(!sensorListtoUpdate.isEmpty()) {
                 listsObjectsToUpdate.addAll(sensorListtoUpdate);
             }
-            if(presenceSensorListtoUpdate.size() >0) {
+            if(!presenceSensorListtoUpdate.isEmpty()) {
                 listsObjectsToUpdate.addAll(presenceSensorListtoUpdate);
             }
-            if(tduListtoUpdate.size() >0) {
+            if(!tduListtoUpdate.isEmpty()) {
                 listsObjectsToUpdate.addAll(tduListtoUpdate);
             }
-            if(tagListtoUpdate.size() >0) {
+            if(!tagListtoUpdate.isEmpty()) {
                 listsObjectsToUpdate.addAll(tagListtoUpdate);
             }
             try {
-                if(listsObjectsToUpdate.size()>0){
+                if(!listsObjectsToUpdate.isEmpty()){
                     update listsObjectsToUpdate;
                 }
             }catch(DmlException e) {
@@ -362,7 +366,7 @@ public class OpportunityTriggerHelper {
             content ='Dear '+' Aryan Sharma'+',<br/>';
             content +='Sensor shipment process is completed. Please refer below mentioned details to get all the'+' '+ 
                 'success and failure details. <br/><br/>';            
-            if(sensorSetName.size()>0){
+            if(!sensorSetName.isEmpty()){
                 content +='<font size = "4">'+'Successful:'+'</font><br/><br/>';
                 content +='<table border="1" cellpadding = "10" cellspacing = "10" style="border-collapse:collapse">'+' '+
                     '<tr height = "35" align="center"><th>'+'Automobile Type'+'</th><th>'+'Name'+
@@ -391,7 +395,7 @@ public class OpportunityTriggerHelper {
                 }
                 content+='</table><br/><br/>';
             }
-            if(invalidSensorName.size()>0) { 
+            if(!invalidSensorName.isEmpty()) { 
                 content +='<font size = "4">'+'Unsuccessful:'+'</font><br/><br/>';
                 content +='<table border="1" cellpadding = "10" cellspacing = "10" style="border-collapse:collapse">'+' '+
                     '<tr height = "35" align="center"><th>'+'Automobile Type'+'</th><th>'+'Name'+
