@@ -53,7 +53,8 @@ public class StateTriggerHelper {
         System.debug(countryId+'<---countryId');
         if(!countryId.isEmpty()){
             List<District__c> districtList = [SELECT Id, Name, State__c, State__r.Name, State__r.Country__c, 
-                                              State__r.Country__r.Name FROM District__c Where State__r.Country__c In : countryId];
+                                              State__r.Country__r.Name FROM District__c 
+                                              Where State__r.Country__c In : countryId];
             System.debug(districtList);
             //Filling out the map dynamically
             for(District__c dist : districtList) {
