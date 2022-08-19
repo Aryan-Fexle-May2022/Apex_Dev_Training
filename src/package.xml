@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>BankAccountHelper</members>
         <members>ContactSearch</members>
         <members>EmployeeRecords</members>
         <members>StudentManager</members>
@@ -41,9 +40,12 @@
         <members>ExampleJSon</members>
         <members>WorkingWithSOQL</members>
         <members>CountryStateJSonGenerator</members>
+        <members>BankAccountHelper</members>
+        <members>OpportunityTriggerHelper</members>
         <name>ApexClass</name>
     </types>
     <types>
+        <members>Opportunity_Trigger</members>
         <members>Bank_Account_Trigger</members>
         <name>ApexTrigger</name>
 	</types>
@@ -139,6 +141,19 @@
         <members>Meeting__c.Number_of_Participants__c</members>
         <members>Meeting__c.Office__c</members>
         <members>Meeting__c.Projector_Required__c</members>
+        <members>Automobile_Presence_Sensor__c.Account__c</members>
+        <members>Automobile_Presence_Sensor__c.Opportunity__c</members>
+        <members>Automobile_Sensor__c.Account__c</members>
+        <members>Automobile_Sensor__c.Opportunity__c</members>
+        <members>Automobile_TDU__c.Account__c</members>
+        <members>Automobile_TDU__c.Opportunity__c</members>
+        <members>Automobile_Tag__c.Account__c</members>
+        <members>Automobile_Tag__c.Opportunity__c</members>
+        <members>Opportunity.Automobile_Tag_Details_1__c</members>
+        <members>Opportunity.Automobile_Tag_Details_2__c</members>
+        <members>Opportunity.Automobile_Tag_Details_3__c</members>
+        <members>Opportunity.Return_To_HQ__c</members>
+        <members>Opportunity.Shipment_Account__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -162,6 +177,10 @@
         <members>Country__c.object</members>
         <members>District__c.object</members>
         <members>State__c.object</members>
+        <members>Automobile_Presence_Sensor__c</members>
+        <members>Automobile_Sensor__c</members>
+        <members>Automobile_TDU__c</members>
+        <members>Automobile_Tag__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -182,6 +201,10 @@
         <members>State__c.</members>
         <members>District__c</members>
         <name>CustomTab</name>
+        <members>Automobile_Presence_Sensor__c</members>
+        <members>Automobile_Sensor__c</members>
+        <members>Automobile_TDU__c</members>
+        <members>Automobile_Tag__c</members>
     </types>
     <types>
         <members>College__c-College Layout</members>
