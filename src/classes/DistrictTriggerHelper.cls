@@ -21,29 +21,20 @@ public class DistrictTriggerHelper {
     public static List<State__c> stateListToUpdate = new List<State__c>();
     // Polulating State Country Records when Trigger is on District Object
     public static void populateCountryStateRecords(List<District__c> newDistList, Map<Id, District__c> oldDistMap) {
-        Set<Id> stateId = new Set<Id>();
+        Set<Id> stateIdSet = new Set<Id>();
         for(District__c district: (newDistList != null ? newDistList : oldDistMap.values())){
-            if(oldDistMap != null && newDistList == null){
-                stateId.add(district.State__c);
-                System.debug(stateId+'<---stateId');
+            if((oldDistMap != null && newDistList == null) || (newDistList != null && oldDistMap == null)) {
+                stateIdSet.add(district.State__c);
             }
-            else if(newDistList != null && oldDistMap == null) {
-                stateId.add(district.State__c);
-                System.debug(stateId+'<---stateId');
-            }
-            else if(newDistList != null && oldDistMap.get(district.Id).State__c != district.State__c) 
+            else if(oldDistMap.get(district.Id).State__c != district.State__c) 
             {
-                stateId.add(district.State__c);
-                System.debug(stateId+'<---stateId');
-                stateId.add(oldDistMap.get(district.Id).State__c);
-                System.debug(stateId+'<---stateId');
+                stateIdSet.add(district.State__c);
+                stateIdSet.add(oldDistMap.get(district.Id).State__c);
             }
         }
-        System.debug(stateId+'<---stateId');
-        if(!stateId.isEmpty()){
+        if(!stateIdSet.isEmpty()){
             List<District__c> districtList = [SELECT Id, Name, State__c, State__r.Name, State__r.Country__c, 
-                                              State__r.Country__r.Name FROM District__c WHERE State__c In :stateId];
-            System.debug(districtList);
+                                              State__r.Country__r.Name FROM District__c WHERE State__c In :stateIdSet];
             //Filling out the map dynamically
             for(District__c dist : districtList) {
                 if(!mapStateWithDistricts.containsKey(dist.State__r.Name)){
@@ -51,21 +42,16 @@ public class DistrictTriggerHelper {
                 }  
                 mapStateWithDistricts.get(dist.State__r.Name).add(dist.Name);   
             }
-            System.debug(mapStateWithDistricts+'<--mapStateWithDistricts');
-            System.debug(mapStateWithDistricts.get('Rajasthan'));
-            System.debug(mapStateWithDistricts.get('State 1'));
             // Count total Districts on State
             List<AggregateResult> AggregateOfDistrictforState = [SELECT COUNT(Name)Total_Number_Of_districts, 
                                                                  State__c stateId, State__r.Name stateName 
-                                                                 FROM District__c WHERE State__c In :stateId 
-                                                                 GROUP BY State__c, State__r.Name];
-            System.debug(AggregateOfDistrictforState+'<---AggregateOfDistrictforState');            
+                                                                 FROM District__c WHERE State__c In :stateIdSet 
+                                                                 GROUP BY State__c, State__r.Name];            
             for(AggregateResult stateName : AggregateOfDistrictforState) {
                 States wrapState = new States();
                 wrapState.stateName = (String)stateName.get('stateName'); 
                 wrapState.districts = new list<Districts>();
                 wrapState.Total_Number_Of_Districts = (Integer)stateName.get('Total_Number_Of_Districts');
-                System.debug((String)stateName.get('stateName')+'<---stateName');
                 if(mapStateWithDistricts.containsKey((String)stateName.get('stateName'))){
                     for(String districtName : mapStateWithDistricts.get((String)stateName.get('stateName'))) 
                     {
@@ -81,13 +67,8 @@ public class DistrictTriggerHelper {
                 st.Total_Number_of_Districts__c = (Integer)stateName.get('Total_Number_Of_districts');
                 stateListToUpdate.add(st);
             } 
-            System.debug(stateListToUpdate+'<---stateListToUpdate');
-            Map<Id, State__c> mapState = new Map<Id, State__c>();
             if(!stateListToUpdate.isEmpty()) {
-                mapState.putAll(stateListToUpdate);
-            }
-            if(!mapState.isEmpty()) {
-                update mapState.values();
+                update stateListToUpdate;
             }
         }
     }
