@@ -55,7 +55,8 @@ public class ContactTriggerHelper {
         }
         System.debug(accountIdSet+'<---accountIdSet');
         if(!accountIdSet.isEmpty()){
-            List<Account> accountList = [Select Id, Name, Status__c, Property__c, Property__r.Status__c From Account Where Id In : accountIdSet];
+            List<Account> accountList = [SELECT Id, Name, Status__c, Property__c, Property__r.Status__c 
+                                         FROM Account WHERE Id In : accountIdSet];
             for(Account acc : accountList){
                 mapOfIdwithAccount.put(acc.Id, acc);
             }
@@ -72,7 +73,8 @@ public class ContactTriggerHelper {
                 }
                 System.debug(propertyIdSet+'<--propertyIdSet');
                 if(!propertyIdSet.isEmpty()){
-                    List<Property__c> propertyList = [Select Id, Name, Status__c From Property__c Where Id In : propertyIdSet];
+                    List<Property__c> propertyList = [SELECT Id, Name, Status__c FROM Property__c 
+                                                      WHERE Id In : propertyIdSet];
                     
                     for(Property__c prop : propertyList){
                         mapOfIdwithProperty.put(prop.Id, prop);
@@ -82,7 +84,8 @@ public class ContactTriggerHelper {
                     if(!propertyList.isEmpty()){
                         for(Contact con : conList) {
                             if(mapOfIdwithProperty.get(mapOfIdwithAccount.get(con.AccountId).Property__c).Status__c != null){
-                                mapOfIdwithAccount.get(con.AccountId).Status__c = mapOfIdwithProperty.get(mapOfIdwithAccount.get(con.AccountId).Property__c).Status__c;
+                                mapOfIdwithAccount.get(con.AccountId).Status__c =
+                                    mapOfIdwithProperty.get(mapOfIdwithAccount.get(con.AccountId).Property__c).Status__c;
                                 con.Status__c = mapOfIdwithAccount.get(con.AccountId).Status__c;
                             }
                         }
