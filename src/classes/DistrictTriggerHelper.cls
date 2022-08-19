@@ -42,7 +42,7 @@ public class DistrictTriggerHelper {
         System.debug(stateId+'<---stateId');
         if(!stateId.isEmpty()){
             List<District__c> districtList = [SELECT Id, Name, State__c, State__r.Name, State__r.Country__c, 
-                                              State__r.Country__r.Name FROM District__c Where State__c In :stateId];
+                                              State__r.Country__r.Name FROM District__c WHERE State__c In :stateId];
             System.debug(districtList);
             //Filling out the map dynamically
             for(District__c dist : districtList) {
@@ -55,10 +55,10 @@ public class DistrictTriggerHelper {
             System.debug(mapStateWithDistricts.get('Rajasthan'));
             System.debug(mapStateWithDistricts.get('State 1'));
             // Count total Districts on State
-            List<AggregateResult> AggregateOfDistrictforState = [Select COUNT(Name)Total_Number_Of_districts, 
+            List<AggregateResult> AggregateOfDistrictforState = [SELECT COUNT(Name)Total_Number_Of_districts, 
                                                                  State__c stateId, State__r.Name stateName 
-                                                                 From District__c Where State__c In :stateId 
-                                                                 Group By State__c, State__r.Name];
+                                                                 FROM District__c WHERE State__c In :stateId 
+                                                                 GROUP BY State__c, State__r.Name];
             System.debug(AggregateOfDistrictforState+'<---AggregateOfDistrictforState');            
             for(AggregateResult stateName : AggregateOfDistrictforState) {
                 States wrapState = new States();
