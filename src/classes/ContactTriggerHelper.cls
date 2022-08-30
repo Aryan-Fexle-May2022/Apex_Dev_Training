@@ -1,12 +1,12 @@
 /**
-	Description 	:   Contact Trigger Helper Class for for Contact_rigger. 
-						Practicing Duplicate Record Trigger Example.
-						Sync Contact with related Account and Property.
-	Created BY 		:   Aryan Sharma
-	Created Date 	:  	27-07-2022
-	Revision Logs 	: 	V_1.0 - Created
-						V_1.1 - Dev Name : Aryan Sharma
-								Date 	 : 10-08-2022
+    Description     :   Contact Trigger Helper Class for for Contact_rigger. 
+                        Practicing Duplicate Record Trigger Example.
+                        Sync Contact with related Account and Property.
+    Created BY      :   Aryan Sharma
+    Created Date    :   27-07-2022
+    Revision Logs   :   V_1.0 - Created
+                        V_1.1 - Aryan Sharma - 10-08-2022
+                        V_1.2 - Aryan Sharma - 30-08-2022
 **/
 public class ContactTriggerHelper {
     public static void checkDuplicateEmail(List<Contact> conNewList, Map<Id,Contact> conOldMap) {
@@ -15,9 +15,11 @@ public class ContactTriggerHelper {
         //Set of Existing Email
         Set<String> existingEmailSet = new Set<String>();
         // Filling the new Email Set from Trigger.New(conNewList)
-        for(Contact newCon : conNewList) {
-            if(newCon.Email != null && (conOldMap == null || newCon.Email != conOldMap.get(newCon.Id).Email)) {
-                newEmailSet.add(newCon.Email);
+        if(!conNewList.isEmpty()){
+            for(Contact newCon : conNewList) {
+                if(newCon.Email != null && (conOldMap == null || newCon.Email != conOldMap.get(newCon.Id).Email)) {
+                    newEmailSet.add(newCon.Email);
+                }
             }
         }
         // Performing SOQL on Contact to get Email(Duplicate records) on the Basis of newEmailSet
