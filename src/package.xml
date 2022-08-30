@@ -41,10 +41,14 @@
         <members>ExampleJSon</members>
         <members>WorkingWithSOQL</members>
         <members>CountryStateJSonGenerator</members>
+        <members>DistrictTriggerHelper</members>
+        <members>StateTriggerHelper</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>Bank_Account_Trigger</members>
+        <members>District_Trigger</members>
+        <members>State_Trigger</members>
         <name>ApexTrigger</name>
 	</types>
     <types>
@@ -139,6 +143,10 @@
         <members>Meeting__c.Number_of_Participants__c</members>
         <members>Meeting__c.Office__c</members>
         <members>Meeting__c.Projector_Required__c</members>
+        <members>Account.Status__c</members>
+        <members>Contact.Status__c</members>
+        <members>Property__c.Status__c</members>
+        <members>State__c.State_Json_Data__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -163,6 +171,7 @@
         <members>District__c.object</members>
         <members>State__c.object</members>
         <name>CustomObject</name>
+        <members>Property__c</members>
     </types>
     <types>
         <members>College__c</members>
