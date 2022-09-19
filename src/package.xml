@@ -147,6 +147,10 @@
         <members>Contact.Status__c</members>
         <members>Property__c.Status__c</members>
         <members>State__c.State_Json_Data__c</members>
+        <members>Form__c.Address__c</members>
+        <members>Form__c.First_Name__c</members>
+        <members>Form__c.Last_Name__c</members>
+        <members>Form__c.Phone_Number__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -170,8 +174,9 @@
         <members>Country__c.object</members>
         <members>District__c.object</members>
         <members>State__c.object</members>
-        <name>CustomObject</name>
+        <members>Form__c</members>
         <members>Property__c</members>
+        <name>CustomObject</name>
     </types>
     <types>
         <members>College__c</members>
