@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="LMS: SubscriberWebComponent" icon-name="custom:custom30">
+        <p class="slds-text-align_center">
+            Count : <lightning-formatted-number value={counter}></lightning-formatted-number>
+        </p>
+        <lightning-layout class="slds-align_absolute-center">
+            <lightning-layout-item class=" slds-p-vertical_small " flexibility="grow">
+                <lightning-progress-bar value={counter} size="large">{counter}%</lightning-progress-bar>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
