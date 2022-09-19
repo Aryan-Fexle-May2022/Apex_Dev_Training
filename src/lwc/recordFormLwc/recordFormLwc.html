@@ -1,0 +1,22 @@
+<template>
+    <!-- Record Form : Default Mode-->
+    <lightning-card title="Record form : Default Mode">
+        <lightning-record-form fields={fields} object-api-name={objectApiName} onsuccess={handleChange}>
+        </lightning-record-form>
+    </lightning-card>
+    <!-- Record Form : Edit Mode-->
+    <lightning-card title="Record form : Edit Mode">
+        <lightning-record-form record-id={recordId} fields={fields} object-api-name={objectApiName} mode="edit">
+        </lightning-record-form>
+    </lightning-card>
+    <!-- Record Form : View Mode-->
+    <lightning-card title="Record form : View Mode">
+        <lightning-record-form record-id={recordId} fields={fields} object-api-name={objectApiName} mode="view">
+        </lightning-record-form>
+    </lightning-card>
+    <!-- Record Form : Read Only Mode-->
+    <lightning-card title="Record form : Read Only Mode">
+        <lightning-record-form record-id={recordId} fields={fields} object-api-name={objectApiName} mode="readOnly">
+        </lightning-record-form>
+    </lightning-card>
+</template>

@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout class="slds-p-around_medium">
+        <lightning-layout-item>
+            <lightning-input label="First Name" value={fName} type="text" name="First Name" onchange={onInputHandler}>
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-m-left_x-small">
+            <lightning-input label="Last Name" value={lName} type="text" name="Last Name" onchange={onInputHandler}>
+            </lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+    <lightning-layout class="slds-p-around_medium">
+        <lightning-layout-item>
+            <lightning-input label="Phone Number" value={pNumber} type="number" name="Phone Number"
+                onchange={onInputHandler}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-m-left_x-small">
+            <lightning-input label="Address" value={address} type="text" name="Address" onchange={onInputHandler}>
+            </lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

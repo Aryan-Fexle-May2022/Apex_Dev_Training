@@ -1,0 +1,13 @@
+<template>
+    <!-- Child Component Dispatch Event to : eventSimple Parent Component -->
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-button label="Next" icon-name="utility:chevronleft" onclick={nextHandler}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item flexibility="grow"></lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button label="Previous" icon-name="utility:chevronright" onclick={previousHandler}>
+            </lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

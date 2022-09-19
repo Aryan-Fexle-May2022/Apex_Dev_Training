@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="Navigation Service in LWC" icon-name="custom:custom99">
+        <!-- Navigate To Record Page -->
+        <lightning-card title="Navigate To Record Page" icon-name="custom:custom83">
+            <div class="slds-grid slds-col">
+                <lightning-button class="slds-p-around_medium" label="New Account" onclick={navigateToNewAccountPage}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium" label="View Account" onclick={navigateToViewAccountPage}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium" label="Edit Account" onclick={navigateToEditAccountPage}>
+                </lightning-button>
+            </div>
+        </lightning-card>
+        <!-- Navigate To Views -->
+        <lightning-card title="Navigate To Views" icon-name="custom:custom27">
+            <div class="slds-grid slds-col">
+                <lightning-button class="slds-p-around_medium" label="Account Recent list View"
+                    onclick={navigateToAccountListView}></lightning-button>
+                <lightning-button class="slds-p-around_medium" label="Account Related List"
+                    onclick={navigateToContactRelatedList}></lightning-button>
+            </div>
+        </lightning-card>
+        <!-- Navigate To Home And Contact Home -->
+        <lightning-card title="Navigate To Home" icon-name="custom:custom50">
+            <lightning-button class="slds-p-around_medium" label="Navigate to Home" onclick={navigateToHomePage}>
+            </lightning-button>
+            <lightning-button class="slds-p-around_medium" label="Navigate to Contact Home "
+                onclick={navigateToContactHome}></lightning-button>
+        </lightning-card>
+        <!-- Navigate To Other Like - Chatter Home, Web Page, Reports, Tab, Files -->
+        <lightning-card title="Navigate To Other" icon-name="custom:custom68">
+            <div class="slds-grid slds-col">
+                <lightning-button class="slds-p-around_medium" label="Navigate to Chatter Home"
+                    onclick={navigateToChatter}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium" label="Navigate to SFDC Point"
+                    onclick={navigateToWebPage}>
+                </lightning-button>
+            </div>
+            <div class="slds-grid slds-col">
+                <lightning-button class="slds-p-around_medium " label="Navigate to Reports" onclick={navigateToReports}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium " label="Navigate to Tab" onclick={navigateToTab}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium" label="Navigate to Files " onclick={navigateToFilesHome}>
+                </lightning-button>
+            </div>
+        </lightning-card>
+        <!-- Navigate To Component -->
+        <lightning-card title="Navigate To Component" icon-name="custom:custom18">
+            <div class="slds-grid slds-col">
+                <lightning-button class="slds-p-around_medium" label="Navigate to VisualForce page "
+                    onclick={navigateToVFPage}>
+                </lightning-button>
+                <lightning-button class="slds-p-around_medium " label="Navigate to Aura Lightning Component "
+                    onclick={navigateToLightningComponent}>
+                </lightning-button>
+            </div>
+        </lightning-card>
+    </lightning-card>
+</template>

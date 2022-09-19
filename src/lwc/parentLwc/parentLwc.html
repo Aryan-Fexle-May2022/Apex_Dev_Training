@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Process Bar" class=" slds-align_absolute-center container" icon-name="utility:level_up">
+        <div class="slds-p-around_small">
+            <c-child-lwc onhandle_bar={processBarRecord}></c-child-lwc>
+            <lightning-layout class="slds-align_absolute-center">
+                <lightning-layout-item class=" slds-p-vertical_small " flexibility="grow">
+                    <lightning-progress-bar value={percentage} size="large">{percentage}%</lightning-progress-bar>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>

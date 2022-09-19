@@ -1,0 +1,36 @@
+<template>
+    <!-- Record View Form : No Custom User Interface -->
+    <lightning-card title="Record View Form : No Custom UI">
+        <lightning-record-view-form record-id={recordId} object-api-name={objectApiName} density="compact">
+            <lightning-output-field field-name="Name"></lightning-output-field>
+            <lightning-output-field field-name="First_Name__c"></lightning-output-field>
+            <lightning-output-field field-name="Last_Name__c"></lightning-output-field>
+            <lightning-output-field field-name="Phone_Number__c"></lightning-output-field>
+            <lightning-output-field field-name="Address__c"></lightning-output-field>
+        </lightning-record-view-form>
+    </lightning-card>
+    <!-- Record View Form : Implementing Custom User Interface -->
+    <lightning-card title="Record View Form : Custom UI">
+        <lightning-record-view-form record-id={recordId} object-api-name={objectApiName} density="compact">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Name"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="First_Name__c"></lightning-output-field>
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Last_Name__c"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Phone_Number__c"></lightning-output-field>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-output-field field-name="Address__c"></lightning-output-field>
+            </div>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>
