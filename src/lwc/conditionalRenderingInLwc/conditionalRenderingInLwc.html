@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Conditional Rendering In Lwc - if:true|false" icon-name="custom:custom16">
+        <div class="slds-p-around_medium">
+            <lightning-input type="checkbox" label="Show Details" onchange={handleChange}></lightning-input>
+            <template if:true={areDetailsVisible}>
+                <div class="slds-m-around_medium" style="color: rgb(16, 142, 192);">
+                    <p><strong>There are the Details.</strong></p>
+                </div>
+            </template>
+            <template if:false={areDetailsVisible}>
+                <div class="slds-m-around_medium" style="color: rgb(245, 46, 46);">
+                    <p><strong>Not showing details.</strong></p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
