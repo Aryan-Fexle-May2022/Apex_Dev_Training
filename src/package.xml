@@ -179,6 +179,31 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>childLwc</members>
+        <members>childWebComponent</members>
+        <members>conditionalRenderingInLwc</members>
+        <members>createRecordUiRecordApi</members>
+        <members>currentRecordIdAndObjectInfoAndUserIdInfo</members>
+        <members>eventSimple</members>
+        <members>forEachRenderListInLwc</members>
+        <members>getListUiAdapter</members>
+        <members>ldsRecordFormViewLwc</members>
+        <members>lmsPublisherLwc</members>
+        <members>lmsSubscriberLwc</members>
+        <members>myFirstComp</members>
+        <members>navigationServicesInLwc</members>
+        <members>paginatorChildComponent</members>
+        <members>parentLwc</members>
+        <members>parentWebComponent</members>
+        <members>recordFormLwc</members>
+        <members>simpleCalculator</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Counting_Update</members>
+        <name>LightningMessageChannel</name>
+    </types>
+    <types>
         <members>College__c</members>
         <members>Employee__c</members>
         <members>Pan_Card__c</members>
