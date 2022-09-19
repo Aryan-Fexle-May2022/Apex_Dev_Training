@@ -1,0 +1,9 @@
+<template>
+    <!-- Parent Component listen Event From :Paginator Child Component -->
+    <lightning-card title="EventSimple listen Event from Paginator" icon-name="custom:custom9">
+        <div class="slds-m-around_medium">
+            <div class="slds-align_absolute-center" style="font-size: medium;">Page {page}</div>
+            <c-paginator onnext={nextHandler} onprevious={previousHandler}></c-paginator>
+        </div>
+    </lightning-card>
+</template>
