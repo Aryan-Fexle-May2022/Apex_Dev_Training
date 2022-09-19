@@ -1,0 +1,40 @@
+<template>
+    <!-- Render List In Lwc - for:each directive-->
+    <lightning-card title="Render List in Lwc - for:each directive" icon-name="utility:list">
+        <div>
+            <lightning-input label="Show Details" onchange={handleChange} type="checkbox"></lightning-input>
+            <template if:true={areDetailsVisible}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template if:true={forms}>
+                            <template for:each={forms} for:item="form">
+                                <tr key={form.Id}>
+                                    <td>{form.fields.Name.value}</td>
+                                    <td>{form.fields.First_Name__c.value}</td>
+                                    <td>{form.fields.Last_Name__c.value}</td>
+                                    <td>{form.fields.Phone_Number__c.value}</td>
+                                    <td>{form.fields.Address__c.value}</td>
+                                </tr>
+                            </template>
+                        </template>
+                        <template if:false={forms}>
+                            <p>No form.</p>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+        </div>
+    </lightning-card>
+    <!-- Render List In Lwc - iterator directive -->
+    <lightning-card title="Render List in Lwc - iterator directive" icon-name="utility:list">
+    </lightning-card>
+</template>
