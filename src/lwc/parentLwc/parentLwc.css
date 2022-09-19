@@ -1,0 +1,9 @@
+.container {
+    overflow: hidden;
+    color: #4e2300;
+}
+.bar {
+    /* margin-left: 4px; */
+    height: 36px;
+    background-color: #ffffff;
+}
