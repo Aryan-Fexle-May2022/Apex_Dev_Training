@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Form" icon-name="action:new_note" class="slds-align_absolute-center ">
+        <c-child-web-component f-name={fName} l-name={lName} p-number={pNumber} address={address}>
+        </c-child-web-component>
+        <lightning-layout class="slds-align_absolute-center">
+            <lightning-layout-item class="slds-m-horizontal_large">
+                <lightning-button variant="brand" title="Submit" label="Submit" onclick={buttonClickHandler}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
